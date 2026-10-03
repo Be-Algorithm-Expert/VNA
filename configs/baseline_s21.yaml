@@ -1,0 +1,27 @@
+# Baseline: transmission S21 only (no symmetrize average), S11/S22 untouched,
+# no smoothing. IFFT to time domain, plot 3-channel (S_avg(=S21), S11, S22).
+
+run_name: baseline_s21
+
+data:
+  root: f:/H坏盘备份/VNA_Cls_2026/dataset_3_2_50_10
+  processed_root: f:/H坏盘备份/VNA_Cls_2026/processed
+  subjects: [S001, S002, S003]
+  sessions: [SES01, SES02]
+
+pipeline:
+  # transmission channel: s21_only | complex_avg
+  symmetrize: s21_only
+  # none | ma | hamming | gaussian | kaiser | savgol  (applied to Re/Im of all channels)
+  smooth:
+    type: none
+    window: 5      # odd, # of frequency points
+    beta: 4.0      # kaiser only
+    polyorder: 2   # savgol only
+
+# figures:
+#  1) all-classes heatmap for ALL subjects x sessions (no config needed)
+#  2) single-sample IFFT curves: defaults to 1st subject / 1st session /
+#     1st class / 1st rep if not given
+plot:
+  sample: S001/SES01/C01/R01

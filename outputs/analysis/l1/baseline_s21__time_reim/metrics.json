@@ -1,0 +1,39 @@
+{
+  "run_name": "baseline_s21",
+  "domain": "time",
+  "feature": "reim",
+  "n_samples": 3000,
+  "n_classes": 50,
+  "fisher_mean": {
+    "S_avg": 0.038,
+    "S11": 0.028,
+    "S22": 0.017
+  },
+  "lda_pooled": {
+    "S_avg": 0.2133,
+    "S11": 0.374,
+    "S22": 0.3233
+  },
+  "lda_logo": {
+    "S_avg": 0.024,
+    "S11": 0.0223,
+    "S22": 0.024
+  },
+  "knn_pooled": {
+    "S_avg": 0.2483,
+    "S11": 0.4407,
+    "S22": 0.3703
+  },
+  "knn_logo": {
+    "S_avg": 0.025,
+    "S11": 0.0223,
+    "S22": 0.0163
+  },
+  "drift_ratio": {
+    "S_avg": 2.137,
+    "S11": 9.731,
+    "S22": 6.967
+  },
+  "pca_pc12_variance": 0.741,
+  "class_distance_mean": 6.404
+}

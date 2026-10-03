@@ -1,0 +1,14 @@
+trial: 30
+model: RsLstm
+features:
+  name: freq_ri
+  normalize: none
+run_name: baseline_s21
+params:
+  num_hidden_units: 240
+  num_lstm_layers: 3
+  dropout_prob: 0.3645075585381547
+learning_rate: 0.00016977168792078984
+val_acc: 0.52
+test_acc: 0.34
+best_epoch: 90

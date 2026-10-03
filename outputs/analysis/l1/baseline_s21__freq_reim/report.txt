@@ -1,0 +1,28 @@
+==== L1 separability report : baseline_s21 ====
+generated : 2026-09-30 01:43:43
+feature   : Re/Im per channel (402 dims/ch, = model input) | domain=freq
+dataset   : n=3000, classes=50, groups=6, chance=0.020
+
+fisher ratio (dB |S|, mean over 201 freq bins; magnitude domain)
+  S_avg 0.06 | S11 0.06 | S22 0.01
+
+LDA (Re/Im) 5-fold pooled (within-distribution ceiling)
+  S_avg 0.213 | S11 0.374 | S22 0.320
+LDA (Re/Im) leave-one-group-out (cross-session)
+  S_avg 0.024 | S11 0.021 | S22 0.022
+
+kNN k=5 (Re/Im) 5-fold pooled
+  S_avg 0.334 | S11 0.537 | S22 0.365
+kNN k=5 (Re/Im) leave-one-group-out
+  S_avg 0.020 | S11 0.016 | S22 0.021
+
+drift ratio (dB |S|; cross-session drift / within-session sep, >1 = drift dominates)
+  S_avg 1.46 | S11 1.76 | S22 4.65
+
+PCA (Re/Im, S11+S22, per-sample centered)
+  PC1+PC2 explain 71.7% variance (figures/pca_scatter.png)
+
+class-mean distance matrix (Re/Im, S11+S22)
+  mean pairwise distance 5.533 (figures/class_distance.png, class_distance.csv)
+
+figures  : outputs\analysis\l1\baseline_s21__freq_reim\figures/fisher_curves.png, pca_scatter.png, class_distance.png

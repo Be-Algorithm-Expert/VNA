@@ -1,0 +1,46 @@
+# Protocol 1: per-group (subject x session) repetition split 7/1/2.
+#   6 groups G = {(Sx,Cy)}; within each group:
+#     R01-R07 train / R08 val / R09-R10 test  -> 350/50/100 samples.
+#   N+5 scheme: hyperparameter grid search ONLY on the first group
+#   (S001/SES01); the other 5 groups reuse the best hyperparameters.
+#   Report: 6 per-group test accuracies, mean ± std.
+
+protocol: 1
+description: "per-group 7/1/2 split, HP search on group-1 (N+5), mean±std over 6 groups"
+
+data:
+  run_name: baseline_s21
+  processed_root: f:/H坏盘备份/VNA_Cls_2026/processed
+  subjects: [S001, S002, S003]
+  sessions: [SES01, SES02]
+  domain: freq            # 选择特征工程做不做ifft
+  first_group: [S001, SES01]   # 超参搜索跑在哪个会话上
+
+split:
+  train_reps: [1, 2, 3, 4, 5, 6, 7]
+  val_reps: [8]
+  test_reps: [9, 10]
+
+search:                   # random search on first group only
+  n_trials: 100           # 外层超参搜索次数
+  seed: 0                 # sampling RNG, for reproducibility
+  verbose_epochs: true    # print per-epoch training records
+  num_hidden_units: {low: 16, high: 256, step: 16}
+  num_lstm_layers: {low: 1, high: 3}
+  learning_rate: {low: 1.0e-4, high: 1.0e-2, log: true}
+  dropout_prob: {low: 0.0, high: 0.5}
+
+model:                    # architecture: name must exist in train.py MODEL_REGISTRY
+  name: RsLstm
+  input_size: 6           # [Re,Im] x [S_avg, S11, S22]
+  output_size: 50
+  is_bidirectional: false
+
+train:                    # fixed across all 6 groups
+  num_epochs: 100
+  batch_size: 50          # divides 350 / 50 / 100
+  patience: 20            # early-stop on val accuracy
+  seed: 42
+
+output:
+  dir: training/protocol1/results
