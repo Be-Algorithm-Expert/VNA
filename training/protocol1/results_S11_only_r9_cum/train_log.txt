@@ -1,0 +1,96 @@
+device   : cuda
+run_name : S11_only_r9_cum | model=RsLstm | domain=time | features={'name': 'freq_ri', 'normalize': 'none'}
+tensors  : X(3000, 108, 2) y(3000,)
+groups   : 6 | per group train/val/test = 350/50/100 (50 classes verified in each)
+
+=== random search: 20 trials on S001/SES01 (N of N+5) ===
+
+[trial   1/20] num_hidden_units=224 num_lstm_layers=2 dropout_prob=0.020486761968097345 lr=3.464e-04
+  -> best_epoch 85 | val 0.7800 | test 0.7300 | 16s
+  ** new best val 0.7800 -> saving best_checkpoint.pt
+
+[trial   2/20] num_hidden_units=32 num_lstm_layers=1 dropout_prob=0.45637778863886086 lr=4.232e-03
+  -> best_epoch 93 | val 0.5800 | test 0.5600 | 7s
+
+[trial   3/20] num_hidden_units=144 num_lstm_layers=2 dropout_prob=0.27181249573271143 lr=2.877e-03
+  -> best_epoch 68 | val 0.7200 | test 0.6100 | 12s
+
+[trial   4/20] num_hidden_units=144 num_lstm_layers=3 dropout_prob=0.0013692500850740474 lr=4.283e-03
+  -> best_epoch 60 | val 0.9000 | test 0.7900 | 15s
+  ** new best val 0.9000 -> saving best_checkpoint.pt
+
+[trial   5/20] num_hidden_units=112 num_lstm_layers=3 dropout_prob=0.36482772321497203 lr=1.167e-04
+  -> best_epoch 0 | val 0.0400 | test 0.0300 | 4s
+
+[trial   6/20] num_hidden_units=224 num_lstm_layers=1 dropout_prob=0.27073061012454586 lr=5.325e-03
+  -> best_epoch 78 | val 0.8800 | test 0.6900 | 8s
+
+[trial   7/20] num_hidden_units=32 num_lstm_layers=1 dropout_prob=0.014159835572731483 lr=7.004e-04
+  -> best_epoch 7 | val 0.0800 | test 0.0700 | 2s
+
+[trial   8/20] num_hidden_units=16 num_lstm_layers=1 dropout_prob=0.32359475578712504 lr=2.194e-03
+  -> best_epoch 28 | val 0.2200 | test 0.1400 | 3s
+
+[trial   9/20] num_hidden_units=80 num_lstm_layers=2 dropout_prob=0.4986049678946055 lr=5.853e-04
+  -> best_epoch 91 | val 0.7000 | test 0.6800 | 12s
+
+[trial  10/20] num_hidden_units=208 num_lstm_layers=3 dropout_prob=0.32522963813390815 lr=2.350e-03
+  -> best_epoch 57 | val 0.9200 | test 0.7800 | 15s
+  ** new best val 0.9200 -> saving best_checkpoint.pt
+
+[trial  11/20] num_hidden_units=224 num_lstm_layers=3 dropout_prob=0.06754825251120561 lr=5.996e-04
+  -> best_epoch 58 | val 0.8200 | test 0.7800 | 18s
+
+[trial  12/20] num_hidden_units=160 num_lstm_layers=3 dropout_prob=0.15512093777947783 lr=1.124e-03
+  -> best_epoch 85 | val 0.8600 | test 0.7800 | 19s
+
+[trial  13/20] num_hidden_units=112 num_lstm_layers=2 dropout_prob=0.46702175797812484 lr=6.011e-03
+  -> best_epoch 75 | val 0.8600 | test 0.7800 | 13s
+
+[trial  14/20] num_hidden_units=144 num_lstm_layers=2 dropout_prob=0.16093469553797107 lr=1.390e-03
+  -> best_epoch 62 | val 0.8000 | test 0.8000 | 12s
+
+[trial  15/20] num_hidden_units=192 num_lstm_layers=2 dropout_prob=0.19580950026408062 lr=4.740e-04
+  -> best_epoch 61 | val 0.7600 | test 0.6800 | 13s
+
+[trial  16/20] num_hidden_units=96 num_lstm_layers=3 dropout_prob=0.3115935723430212 lr=2.847e-04
+  -> best_epoch 98 | val 0.7200 | test 0.6900 | 18s
+
+[trial  17/20] num_hidden_units=16 num_lstm_layers=1 dropout_prob=0.3935491537443417 lr=4.627e-03
+  -> best_epoch 66 | val 0.4400 | test 0.3500 | 6s
+
+[trial  18/20] num_hidden_units=96 num_lstm_layers=1 dropout_prob=0.029284017402597173 lr=5.662e-03
+  -> best_epoch 57 | val 0.7200 | test 0.6400 | 6s
+
+[trial  19/20] num_hidden_units=176 num_lstm_layers=2 dropout_prob=0.2251696833246435 lr=1.998e-04
+  -> best_epoch 72 | val 0.7000 | test 0.5900 | 13s
+
+[trial  20/20] num_hidden_units=240 num_lstm_layers=3 dropout_prob=0.026010650532204804 lr=2.893e-04
+  -> best_epoch 64 | val 0.7600 | test 0.7800 | 19s
+
+=== best HP (trial 10): num_hidden_units=208 num_lstm_layers=3 dropout_prob=0.32522963813390815 lr=2.350e-03 | val 0.9200 test 0.7800 ===
+
+=== train all 6 groups with best HP (N+5) ===
+
+[1/6] S001/SES01
+  -> best_epoch 57 | val 0.9200 | test 0.7800
+
+[2/6] S001/SES02
+  -> best_epoch 53 | val 0.9400 | test 0.8900
+
+[3/6] S002/SES01
+  -> best_epoch 45 | val 0.7400 | test 0.6200
+
+[4/6] S002/SES02
+  -> best_epoch 57 | val 0.8800 | test 0.8900
+
+[5/6] S003/SES01
+  -> best_epoch 8 | val 0.1400 | test 0.1300
+
+[6/6] S003/SES02
+  -> best_epoch 65 | val 0.8600 | test 0.7600
+============================================================
+protocol 1 | run_name=S11_only_r9_cum | model=RsLstm | features=freq_ri | normalize=none
+best HP: num_hidden_units=208 num_lstm_layers=3 dropout_prob=0.32522963813390815 lr=2.350e-03
+test accuracy over 6 groups: 67.83% ± 26.16%
+outputs -> F:\H坏盘备份\VNA_Cls_2026\training\protocol1\results_S11_only_r9_cum

@@ -162,6 +162,20 @@ def make_loader(X, y, idx, batch_size, shuffle):
     return DataLoader(TensorDataset(x, t), batch_size=batch_size, shuffle=shuffle)
 
 
+def standardize(X, tr_idx):
+    """Per-column z-score using ONLY train statistics (leakage-free).
+
+    The enhancement chain (amp_norm + appended scalar features) leaves the
+    tensor columns on very different scales; without this the LSTM loss sits
+    at ln(50) and never moves. Columns are flattened so curve steps and
+    feature steps are each whitened.
+    """
+    Xf = X.reshape(X.shape[0], -1).astype(np.float32)
+    mu = Xf[tr_idx].mean(axis=0)
+    sd = Xf[tr_idx].std(axis=0) + 1e-6
+    return ((Xf - mu) / sd).reshape(X.shape)
+
+
 def forward_model(model, x_batch, device):
     """RsLstm forward with this batch's sequence lengths."""
     x_batch = x_batch.to(device)
@@ -316,13 +330,15 @@ def run_protocol1(cfg, X, y, meta, out_dir, n_trials=None, log=None):
         f"(50 classes verified in each)")
 
     bs = cfg["train"]["batch_size"]
+    do_std = cfg["train"].get("standardize", True)
     fg = tuple(cfg["data"]["first_group"])
     if fg not in groups:
         sys.exit(f"[abort] first_group {fg} not found in data")
     idx = groups[fg]
-    fg_loaders = (make_loader(X, y, idx[0], bs, True),
-                  make_loader(X, y, idx[1], bs, False),
-                  make_loader(X, y, idx[2], bs, False))
+    Xg = standardize(X, idx[0]) if do_std else X
+    fg_loaders = (make_loader(Xg, y, idx[0], bs, True),
+                  make_loader(Xg, y, idx[1], bs, False),
+                  make_loader(Xg, y, idx[2], bs, False))
 
     log(f"\n=== random search: {n_trials} trials on {fg[0]}/{fg[1]} (N of N+5) ===")
     params, lr, rec = random_search(cfg, fg_loaders, device, out_dir, log,
@@ -335,9 +351,10 @@ def run_protocol1(cfg, X, y, meta, out_dir, n_trials=None, log=None):
     rows = []
     for i, key in enumerate(sorted(groups), 1):
         idx = groups[key]
-        loaders = (make_loader(X, y, idx[0], bs, True),
-                   make_loader(X, y, idx[1], bs, False),
-                   make_loader(X, y, idx[2], bs, False))
+        Xg = standardize(X, idx[0]) if do_std else X
+        loaders = (make_loader(Xg, y, idx[0], bs, True),
+                   make_loader(Xg, y, idx[1], bs, False),
+                   make_loader(Xg, y, idx[2], bs, False))
         log(f"\n[{i}/{len(groups)}] {key[0]}/{key[1]}")
         ep, va, te, state = train_group(cfg, params, lr, loaders, device,
                                         log, cfg["search"].get("verbose_epochs", True))

@@ -318,13 +318,31 @@ def main():
 
     run = cfg["run_name"]
     domain = args.domain or cfg.get("data", {}).get("domain", "time")
-    proc_root = Path(cfg["data"]["processed_root"]) / run
+    # data.run_name (optional) selects the PROCESSED directory; run_name names
+    # the outputs. Ablation variants share one processed cache this way.
+    data_run = cfg.get("data", {}).get("run_name", run)
+    proc_root = Path(cfg["data"]["processed_root"]) / data_run
     out_dir = Path("outputs/analysis/l0") / run
     out_dir.mkdir(parents=True, exist_ok=True)
 
     t0 = time.time()
     acc = scan_raw(proc_root, cfg["data"]["subjects"], cfg["data"]["sessions"])
     secs = time.time() - t0
+
+    # honor channel_select from the enhancement chain: dropped channels are
+    # removed from the raw scan too, so checks [3]/[4]/[5] reflect the chain
+    drop = []
+    for s in (cfg.get("enhance") or {}).get("steps") or []:
+        if s.get("name") == "channel_select":
+            drop += (s.get("params") or {}).get("drop", [])
+    if drop and acc["channels"]:
+        keep = [j for j, c in enumerate(acc["channels"]) if c not in drop]
+        acc["mags"] = acc["mags"][:, :, keep]
+        acc["channels"] = [acc["channels"][j] for j in keep]
+        acc["energy_by_key"] = {
+            k: [(r, e[keep]) for r, e in lst]
+            for k, lst in acc["energy_by_key"].items()}
+        print(f"[l0] channel_select active: checking {acc['channels']} only")
 
     outlier_res = check_outliers(acc)
     results = [

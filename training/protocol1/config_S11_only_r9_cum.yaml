@@ -1,0 +1,97 @@
+# S11_only_r9_cum: S11-only + r9 enhancement chain (amp_norm ON)
+# + cum_energy features, RsLstm, protocol 1.
+# Input to RsLstm: [108, 2] time series (92 gated time steps Re/Im + 16
+# cumulative-energy feature steps appended along the sequence axis).
+# Protocol 1: per-group 7/1/2 repetition split, N+5 (HP search on group 1).
+
+protocol: 1
+description: "S11-only + r9 chain + cum_energy append, RsLstm, protocol 1"
+
+run_name: S11_only_r9_cum
+
+data:
+  root: f:/H坏盘备份/VNA_Cls_2026/dataset_3_2_50_10
+  processed_root: f:/H坏盘备份/VNA_Cls_2026/processed
+  run_name: baseline_s21          # shared processed cache
+  subjects: [S001, S002, S003]
+  sessions: [SES01, SES02]
+  domain: time
+  first_group: [S001, SES01]
+
+enhance:
+  steps:
+    - name: channel_select
+      params:
+        drop: [S_avg, S22]        # S11 only
+
+    - name: bootstrap_avg
+      params:
+        n_draws: 10
+        seed: 0
+
+    - name: diff_sub
+      params:
+        ref: group_median
+
+    - name: diff_div
+      params:
+        ref: group_median
+        mask_db: -60.0
+
+    - name: ifft_window
+      params:
+        type: kaiser
+        beta: 6.0
+
+    - name: delay_align
+      params: {}
+
+    - name: early_gate
+      params:
+        depth_db: -20.0
+        mode: crop
+        quantile: 0.9
+
+    - name: amp_norm
+      params:
+        mode: l2
+
+    - name: step_crop
+      params:
+        frac: 0.01
+
+    - name: time_feats
+      params:
+        mode: append
+        groups: [cum_energy]
+        cum_bins: 16
+
+split:
+  train_reps: [1, 2, 3, 4, 5, 6, 7]
+  val_reps: [8]
+  test_reps: [9, 10]
+
+search:
+  n_trials: 20
+  seed: 0
+  verbose_epochs: false
+  num_hidden_units: {low: 16, high: 256, step: 16}
+  num_lstm_layers: {low: 1, high: 3}
+  learning_rate: {low: 1.0e-4, high: 1.0e-2, log: true}
+  dropout_prob: {low: 0.0, high: 0.5}
+
+model:
+  name: RsLstm
+  input_size: 2                   # [Re, Im] of S11 (features are extra steps)
+  output_size: 50
+  is_bidirectional: false
+
+train:
+  num_epochs: 100
+  batch_size: 50
+  patience: 20
+  seed: 42
+  standardize: true              # per-column z-score (train stats, leak-free)
+
+output:
+  dir: training/protocol1/results_S11_only_r9_cum

@@ -1,0 +1,28 @@
+==== L1 separability report : feat_peak_seq ====
+generated : 2026-10-09 01:57:27
+feature   : 97 pts x 1 ch (Re/Im interleaved) | domain=time
+dataset   : n=3000, classes=50, groups=6, chance=0.020
+
+fisher ratio (dB |S|, mean over 201 freq bins; magnitude domain)
+  S11 0.07
+
+LDA (Re/Im) 5-fold pooled (within-distribution ceiling)
+  S11 0.780
+LDA (Re/Im) leave-one-group-out (cross-session)
+  S11 0.021
+
+kNN k=5 (Re/Im) 5-fold pooled
+  S11 0.888
+kNN k=5 (Re/Im) leave-one-group-out
+  S11 0.015
+
+drift ratio (dB |S|; cross-session drift / within-session sep, >1 = drift dominates)
+  S11 1.63
+
+PCA (Re/Im, S11+S22, per-sample centered)
+  PC1+PC2 explain 31.5% variance (figures/pca_scatter.png)
+
+class-mean distance matrix (Re/Im, S11+S22)
+  mean pairwise distance 4.734 (figures/class_distance.png, class_distance.csv)
+
+figures  : outputs\analysis\l1\feat_peak_seq__time_reim\figures/fisher_curves.png, pca_scatter.png, class_distance.png

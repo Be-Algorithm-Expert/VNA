@@ -80,7 +80,10 @@ def load_features(cfg, domain):
     X, y, meta = build_dataset(cfg, domain)
     C = X[:, :, 0::2] + 1j * X[:, :, 1::2]          # back to complex (n, 201, 3)
     run = cfg["run_name"]
-    proc_root = Path(cfg["data"]["processed_root"]) / run
+    # data.run_name (optional) selects the PROCESSED directory; run_name names
+    # the outputs. Ablation variants share one processed cache this way.
+    data_run = cfg.get("data", {}).get("run_name", run)
+    proc_root = Path(cfg["data"]["processed_root"]) / data_run
     first = next(iter_samples(proc_root, cfg["data"]["subjects"],
                               cfg["data"]["sessions"]), None)
     if first is not None:
@@ -90,6 +93,14 @@ def load_features(cfg, domain):
     else:
         freq = np.arange(C.shape[1])
         channels = ["ch0", "ch1", "ch2"]
+    # keep channel names in sync with the enhancement chain (channel_select
+    # may drop channels, so the tensor can have fewer than the npz lists)
+    for s in (cfg.get("enhance") or {}).get("steps") or []:
+        if s.get("name") == "channel_select":
+            drop = (s.get("params") or {}).get("drop", [])
+            channels = [c for c in channels if c not in drop]
+    if len(channels) != C.shape[2]:
+        channels = [f"ch{j}" for j in range(C.shape[2])]
     return C, y, meta, freq, channels
 
 
@@ -302,12 +313,19 @@ def main():
 
     # ---- fisher figure (magnitude-domain descriptor)
     fig, ax = plt.subplots(figsize=(9, 4.5))
+    if len(freq) != fisher.shape[0]:
+        # enhancement chain cropped / reshaped the axis (e.g. early_gate,
+        # step_crop): fall back to a plain index axis
+        xaxis = np.arange(fisher.shape[0])
+        xlabel = "axis index (enhanced/cropped)"
+    else:
+        xaxis, xlabel = freq, "frequency (GHz)"
     for j, ch in enumerate(channels):
-        ax.plot(freq, fisher[:, j], lw=1.0, label=ch)
+        ax.plot(xaxis, fisher[:, j], lw=1.0, label=ch)
     ax.set_yscale("log")
-    ax.set_xlabel("frequency (GHz)")
+    ax.set_xlabel(xlabel)
     ax.set_ylabel("fisher ratio  (between / within)")
-    ax.set_title(f"Fisher ratio per frequency point - {run} ({domain}, dB |S|)")
+    ax.set_title(f"Fisher ratio per point - {run} ({domain}, dB |S|)")
     ax.grid(alpha=0.3)
     ax.legend()
     fig.tight_layout()
@@ -323,8 +341,8 @@ def main():
     L = []
     L.append(f"==== L1 separability report : {run} ====")
     L.append(f"generated : {datetime.now():%Y-%m-%d %H:%M:%S}")
-    L.append(f"feature   : Re/Im per channel (402 dims/ch, = model input) "
-             f"| domain={domain}")
+    L.append(f"feature   : {C.shape[1]} pts x {C.shape[2]} ch (Re/Im interleaved)"
+             f" | domain={domain}")
     L.append(f"dataset   : n={len(y)}, classes={y.max() + 1}, "
              f"groups={len({(m[0], m[1]) for m in meta})}, chance={1 / (y.max() + 1):.3f}")
     L.append("")
@@ -386,7 +404,7 @@ def main():
     for ch in channels:
         row[f"fisher_{ch}"] = metrics["fisher_mean"][ch]
         row[f"drift_{ch}"] = metrics["drift_ratio"][ch]
-    for ch in ["S11", "S22"]:
+    for ch in [c for c in ["S11", "S22"] if c in metrics["lda_pooled"]]:
         row[f"lda_pooled_{ch}"] = metrics["lda_pooled"][ch]
         row[f"lda_logo_{ch}"] = metrics["lda_logo"][ch]
         row[f"knn_pooled_{ch}"] = metrics["knn_pooled"][ch]

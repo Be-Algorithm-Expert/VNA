@@ -49,23 +49,42 @@ def iter_samples(proc_root, subjects, sessions):
 
 
 def build_dataset(cfg, domain="time"):
-    """Return X [n, 201, 6], y [n], meta list. Loads everything into memory.
+    """Return X [n, T, 2*ch], y [n], meta list. Loads everything into memory.
 
-    domain="time" (default) applies the IFFT, see load_sample().
+    Two-phase construction (group-aware enhancement needs cross-sample state):
+      phase 1  load every sample as complex frequency data  C (n, T, ch)
+      phase 2  cfg["enhance"]["steps"] (ordered; empty = legacy behavior),
+               then IFFT when domain="time" -> Re/Im interleaved float tensor
 
-    run_name may live at cfg['run_name'] (preprocess-style) or
-    cfg['data']['run_name'] (training-style).
+    run_name resolution: cfg["data"]["run_name"] (if present) selects the
+    PROCESSED data directory; cfg["run_name"] names outputs. This lets many
+    ablation variants share one processed cache.
     """
     run_name = cfg.get("run_name") or cfg["data"]["run_name"]
-    proc_root = Path(cfg["data"]["processed_root"]) / run_name
-    xs, ys, meta = [], [], []
+    data_run = cfg.get("data", {}).get("run_name", run_name)
+    proc_root = Path(cfg["data"]["processed_root"]) / data_run
+
+    Cs, ys, meta, channels = [], [], [], None
     for f, subj, ses, cls, rep in iter_samples(proc_root, cfg["data"]["subjects"],
                                                 cfg["data"]["sessions"]):
-        x, _, _, _ = load_sample(f, domain)
-        xs.append(x)
+        d = np.load(f, allow_pickle=False)
+        if channels is None:
+            channels = [str(c) for c in d["channels"]]
+        Cs.append(d["S"])
         ys.append(cls)
         meta.append((subj, ses, cls, rep))
-    return np.stack(xs), np.asarray(ys, dtype=np.int64), meta
+    if not Cs:
+        sys.exit(f"[abort] no npz found under {proc_root}")
+    C = np.stack(Cs)                                        # (n, T, ch) complex
+
+    from enhance import apply_enhance                       # local: avoid cycle
+    steps = (cfg.get("enhance") or {}).get("steps") or []
+    C, channels, _ = apply_enhance(C, meta, channels, steps, domain)
+
+    x = np.empty((C.shape[0], C.shape[1], C.shape[2] * 2), dtype=np.float32)
+    x[:, :, 0::2] = C.real
+    x[:, :, 1::2] = C.imag
+    return x, np.asarray(ys, dtype=np.int64), meta
 
 
 def main():

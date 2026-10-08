@@ -1,0 +1,27 @@
+{
+  "run_name": "feat_fno_cepstrum",
+  "domain": "time",
+  "feature": "reim",
+  "n_samples": 3000,
+  "n_classes": 50,
+  "fisher_mean": {
+    "S11": 0.07
+  },
+  "lda_pooled": {
+    "S11": 0.8017
+  },
+  "lda_logo": {
+    "S11": 0.018
+  },
+  "knn_pooled": {
+    "S11": 0.8893
+  },
+  "knn_logo": {
+    "S11": 0.021
+  },
+  "drift_ratio": {
+    "S11": 1.614
+  },
+  "pca_pc12_variance": 0.613,
+  "class_distance_mean": 5.206
+}

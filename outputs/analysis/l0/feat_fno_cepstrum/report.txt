@@ -1,0 +1,22 @@
+==== L0 health report : feat_fno_cepstrum ====
+generated : 2026-10-09 01:59:23 (3s scan)
+dataset   : 3000 samples | ['S11'] | tensor domain=time
+
+[1] finite (raw S)    . PASS  0 file(s) with NaN/Inf in raw S
+
+[2] files & freq axis . PASS  6 groups x 500 files | shape (201, 3) | df=25.0 MHz
+      freq axes identical & monotonic across all files
+
+[3] dynamic range     . PASS        S11           median    -3.4 dB | P1..P99   -9.1..  -0.8 dB |    0% pts < -90 dB
+
+[4] sample outliers   . PASS  0 flagged sample(s) (energy outliers: 0, exact duplicates: 0)
+
+[5] channel drift     . PASS  max corr spread 0.00 (threshold 0.15) | max group-mean dev 0.8 dB (threshold 3.0 dB)
+
+[6] tensor (layer 2)  . PASS  X(3000, 118, 2) | finite: True | mean +1.239e-01 std 7.344e-01 absmax 2.900e+01
+      informative steps 61/118 (52%)
+
+verdict         : USABLE
+usable channels : S11
+dead channels   : (none)
+flagged samples : 0  (details: flagged_samples.csv)

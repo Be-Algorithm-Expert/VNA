@@ -1,0 +1,27 @@
+{
+  "run_name": "feat_fno_group_delay",
+  "domain": "time",
+  "feature": "reim",
+  "n_samples": 3000,
+  "n_classes": 50,
+  "fisher_mean": {
+    "S11": 0.076
+  },
+  "lda_pooled": {
+    "S11": 0.826
+  },
+  "lda_logo": {
+    "S11": 0.0187
+  },
+  "knn_pooled": {
+    "S11": 0.875
+  },
+  "knn_logo": {
+    "S11": 0.0217
+  },
+  "drift_ratio": {
+    "S11": 1.55
+  },
+  "pca_pc12_variance": 0.608,
+  "class_distance_mean": 5.549
+}

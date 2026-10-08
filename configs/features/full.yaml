@@ -1,0 +1,69 @@
+# Feature-ablation source of truth (parallel to configs/ablation/full.yaml).
+# The BASE chain is fixed (S11-only + r9 chain, amp_norm OFF because the
+# energy feature group needs unnormalized amplitude); the last step
+# `time_feats` is what analysis/features/run_features.py derives variants from.
+#
+# mode: append = concat Re/Im curve + scalar features (the model sees BOTH);
+#       replace = scalar features only (ablation of the "introduced" claim).
+# select: optional column whitelist applied after the group filter.
+
+run_name: feat_full
+
+data:
+  root: f:/H坏盘备份/VNA_Cls_2026/dataset_3_2_50_10
+  processed_root: f:/H坏盘备份/VNA_Cls_2026/processed
+  run_name: baseline_s21          # shared processed cache
+  subjects: [S001, S002, S003]
+  sessions: [SES01, SES02]
+  domain: time
+
+enhance:
+  steps:
+    - name: channel_select
+      params:
+        drop: [S_avg, S22]        # S11 only
+
+    - name: bootstrap_avg
+      params:
+        n_draws: 10
+        seed: 0
+
+    - name: diff_sub
+      params:
+        ref: group_median
+
+    - name: diff_div
+      params:
+        ref: group_median
+        mask_db: -60.0
+
+    - name: ifft_window
+      params:
+        type: kaiser
+        beta: 6.0
+
+    - name: delay_align
+      params: {}
+
+    - name: early_gate
+      params:
+        depth_db: -20.0
+        mode: crop
+        quantile: 0.9
+
+    - name: amp_norm               # restored: energy feature group was dropped
+      params:                      # (they were mutually exclusive with amp_norm)
+        mode: l2
+
+    - name: step_crop
+      params:
+        frac: 0.01
+
+    - name: time_feats
+      params:
+        mode: append
+        groups: [peak_delay, echo_width, decay_slope, cum_energy,
+                 group_delay, peak_seq, cepstrum]
+        cum_bins: 16
+        n_peaks: 5
+        cep_bins: 16

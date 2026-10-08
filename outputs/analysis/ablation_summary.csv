@@ -1,0 +1,2 @@
+﻿run_name,kind,verdict,n_warn,informative_frac,tensor_shape,lda_logo_S11,lda_logo_S22,knn_logo_S11,knn_logo_S22,lda_pooled_S11,lda_pooled_S22,drift_ratio_S11,drift_ratio_S22,fisher_mean_S11,fisher_mean_S22,pca_pc12,knn_pooled_S11,knn_pooled_S22
+ablation_r9,cumulative,USABLE (with warnings),1,1.0,3000x83x4,0.015,0.0193,0.0173,0.0327,0.7523,0.6547,1.506,1.756,0.08,0.076,0.356,0.8813,0.81

@@ -1,0 +1,65 @@
+# Ablation full pipeline: the single source of truth for the complete method.
+# All ablation variants (analysis/ablation/run_ablation.py) are DERIVED from
+# this file by toggling / reordering the steps below. The list order IS the
+# execution order; rationale (see paper method section):
+#   channel_select first (dead channel pollutes every later statistic),
+#   bootstrap_avg before diff (division amplifies reference noise otherwise),
+#   diff_sub before diff_div (additive b must go before multiplicative g),
+#   ifft_window / delay_align in frequency domain,
+#   early_gate before amp_norm (gate changes the energy the norm is built on),
+#   step_crop last (its boundary depends on the final waveform).
+#
+# Time domain only in this project; freq-domain evaluation is kept working
+# but time steps are skipped there (see src/enhance.py).
+
+run_name: ablation_full
+
+data:
+  root: f:/H坏盘备份/VNA_Cls_2026/dataset_3_2_50_10
+  processed_root: f:/H坏盘备份/VNA_Cls_2026/processed
+  run_name: baseline_s21          # shared processed cache (layer-1 output)
+  subjects: [S001, S002, S003]
+  sessions: [SES01, SES02]
+  domain: time
+
+enhance:
+  steps:
+    - name: channel_select         # dead-channel fix: drop noise-floor channel
+      params:
+        drop: [S_avg]
+
+    - name: bootstrap_avg          # noise: rep-level bootstrap mean (~8 dB gain)
+      params:
+        n_draws: 10
+        seed: 0
+
+    - name: diff_sub               # drift: subtract group reference (additive b)
+      params:
+        ref: group_median
+
+    - name: diff_div               # drift: divide group reference (multiplicative g)
+      params:
+        ref: group_median
+        mask_db: -60.0             # never divide where the reference is noise
+
+    - name: ifft_window            # informative steps: suppress sinc sidelobes
+      params:
+        type: kaiser
+        beta: 6.0
+
+    - name: delay_align            # drift: per-group linear-phase alignment
+      params: {}
+
+    - name: early_gate             # drift+informative: remove coupling burst
+      params:
+        depth_db: -20.0            # ablate: -10 / -15 / -20 / -30
+        mode: crop                 # crop | zero
+        quantile: 0.9              # global gate boundary from per-sample gates
+
+    - name: amp_norm               # drift: per-sample L2 gain normalization
+      params:
+        mode: l2
+
+    - name: step_crop              # informative: crop near-constant steps
+      params:
+        frac: 0.01

@@ -1,0 +1,96 @@
+{
+  "run_name": "feat_fno_group_delay",
+  "domain": "time",
+  "timestamp": "2026-10-09T01:58:52",
+  "n_samples": 3000,
+  "verdict": "USABLE (with warnings)",
+  "usable_channels": [
+    "S11"
+  ],
+  "dead_channels": [],
+  "thresholds": {
+    "noise_floor_db": -90.0,
+    "dead_chan_frac": 0.5,
+    "weak_chan_median_db": -60.0,
+    "energy_dev_db": 20.0,
+    "max_flagged_frac": 0.1,
+    "corr_drift": 0.15,
+    "mean_drift_db": 3.0
+  },
+  "checks": {
+    "finite": {
+      "status": "PASS",
+      "lines": [
+        "0 file(s) with NaN/Inf in raw S"
+      ],
+      "data": {
+        "n_bad": 0
+      }
+    },
+    "files_axis": {
+      "status": "PASS",
+      "lines": [
+        "6 groups x 500 files | shape (201, 3) | df=25.0 MHz",
+        "freq axes identical & monotonic across all files"
+      ],
+      "data": {
+        "n_groups": 6,
+        "n_files": 3000,
+        "missing_groups": []
+      }
+    },
+    "dynamic_range": {
+      "status": "PASS",
+      "lines": [
+        "      S11           median    -3.4 dB | P1..P99   -9.1..  -0.8 dB |    0% pts < -90 dB"
+      ],
+      "data": {
+        "S11": {
+          "median_db": -3.4,
+          "p1_db": -9.1,
+          "p99_db": -0.8,
+          "frac_below_floor": 0.0,
+          "dead": false
+        },
+        "dead_channels": []
+      }
+    },
+    "sample_outliers": {
+      "status": "PASS",
+      "lines": [
+        "0 flagged sample(s) (energy outliers: 0, exact duplicates: 0)"
+      ],
+      "data": {
+        "n_flagged": 0,
+        "frac": 0.0
+      }
+    },
+    "channel_drift": {
+      "status": "PASS",
+      "lines": [
+        "max corr spread 0.00 (threshold 0.15) | max group-mean dev 0.8 dB (threshold 3.0 dB)"
+      ],
+      "data": {
+        "max_corr_spread": 0.0,
+        "max_mean_dev_db": 0.81
+      }
+    },
+    "tensor": {
+      "status": "WARN",
+      "lines": [
+        "X(3000, 132, 2) | finite: True | mean +8.770e-02 std 7.526e-01 absmax 2.900e+01",
+        "only 65/132 informative steps (49% < 50%) - most inputs are near-constant for the model"
+      ],
+      "data": {
+        "shape": [
+          3000,
+          132,
+          2
+        ],
+        "n_nonfinite": 0,
+        "informative_steps": 65,
+        "informative_frac": 0.492
+      }
+    }
+  }
+}

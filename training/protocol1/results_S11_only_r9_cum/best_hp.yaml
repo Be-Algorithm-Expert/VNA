@@ -1,0 +1,14 @@
+trial: 10
+model: RsLstm
+features:
+  name: freq_ri
+  normalize: none
+run_name: S11_only_r9_cum
+params:
+  num_hidden_units: 208
+  num_lstm_layers: 3
+  dropout_prob: 0.32522963813390815
+learning_rate: 0.0023500871561213787
+val_acc: 0.92
+test_acc: 0.78
+best_epoch: 57

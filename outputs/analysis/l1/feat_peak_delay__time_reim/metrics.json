@@ -1,0 +1,27 @@
+{
+  "run_name": "feat_peak_delay",
+  "domain": "time",
+  "feature": "reim",
+  "n_samples": 3000,
+  "n_classes": 50,
+  "fisher_mean": {
+    "S11": 0.072
+  },
+  "lda_pooled": {
+    "S11": 0.7633
+  },
+  "lda_logo": {
+    "S11": 0.0177
+  },
+  "knn_pooled": {
+    "S11": 0.8977
+  },
+  "knn_logo": {
+    "S11": 0.0123
+  },
+  "drift_ratio": {
+    "S11": 1.605
+  },
+  "pca_pc12_variance": 0.469,
+  "class_distance_mean": 4.229
+}

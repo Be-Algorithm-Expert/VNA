@@ -1,0 +1,27 @@
+{
+  "run_name": "feat_cum_energy",
+  "domain": "time",
+  "feature": "reim",
+  "n_samples": 3000,
+  "n_classes": 50,
+  "fisher_mean": {
+    "S11": 0.071
+  },
+  "lda_pooled": {
+    "S11": 0.7727
+  },
+  "lda_logo": {
+    "S11": 0.0157
+  },
+  "knn_pooled": {
+    "S11": 0.899
+  },
+  "knn_logo": {
+    "S11": 0.0177
+  },
+  "drift_ratio": {
+    "S11": 1.643
+  },
+  "pca_pc12_variance": 0.345,
+  "class_distance_mean": 5.137
+}

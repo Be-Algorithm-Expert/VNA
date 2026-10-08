@@ -1,0 +1,27 @@
+{
+  "run_name": "feat_f0",
+  "domain": "time",
+  "feature": "reim",
+  "n_samples": 3000,
+  "n_classes": 50,
+  "fisher_mean": {
+    "S11": 0.072
+  },
+  "lda_pooled": {
+    "S11": 0.7563
+  },
+  "lda_logo": {
+    "S11": 0.019
+  },
+  "knn_pooled": {
+    "S11": 0.898
+  },
+  "knn_logo": {
+    "S11": 0.0137
+  },
+  "drift_ratio": {
+    "S11": 1.631
+  },
+  "pca_pc12_variance": 0.314,
+  "class_distance_mean": 4.586
+}

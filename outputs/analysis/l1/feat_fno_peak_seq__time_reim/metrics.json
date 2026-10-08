@@ -1,0 +1,27 @@
+{
+  "run_name": "feat_fno_peak_seq",
+  "domain": "time",
+  "feature": "reim",
+  "n_samples": 3000,
+  "n_classes": 50,
+  "fisher_mean": {
+    "S11": 0.075
+  },
+  "lda_pooled": {
+    "S11": 0.8207
+  },
+  "lda_logo": {
+    "S11": 0.0147
+  },
+  "knn_pooled": {
+    "S11": 0.881
+  },
+  "knn_logo": {
+    "S11": 0.0177
+  },
+  "drift_ratio": {
+    "S11": 1.562
+  },
+  "pca_pc12_variance": 0.594,
+  "class_distance_mean": 5.512
+}

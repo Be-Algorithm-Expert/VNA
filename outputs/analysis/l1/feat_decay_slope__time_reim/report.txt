@@ -1,0 +1,28 @@
+==== L1 separability report : feat_decay_slope ====
+generated : 2026-10-09 01:56:43
+feature   : 93 pts x 1 ch (Re/Im interleaved) | domain=time
+dataset   : n=3000, classes=50, groups=6, chance=0.020
+
+fisher ratio (dB |S|, mean over 201 freq bins; magnitude domain)
+  S11 0.07
+
+LDA (Re/Im) 5-fold pooled (within-distribution ceiling)
+  S11 0.757
+LDA (Re/Im) leave-one-group-out (cross-session)
+  S11 0.019
+
+kNN k=5 (Re/Im) 5-fold pooled
+  S11 0.897
+kNN k=5 (Re/Im) leave-one-group-out
+  S11 0.014
+
+drift ratio (dB |S|; cross-session drift / within-session sep, >1 = drift dominates)
+  S11 1.63
+
+PCA (Re/Im, S11+S22, per-sample centered)
+  PC1+PC2 explain 31.2% variance (figures/pca_scatter.png)
+
+class-mean distance matrix (Re/Im, S11+S22)
+  mean pairwise distance 4.625 (figures/class_distance.png, class_distance.csv)
+
+figures  : outputs\analysis\l1\feat_decay_slope__time_reim\figures/fisher_curves.png, pca_scatter.png, class_distance.png

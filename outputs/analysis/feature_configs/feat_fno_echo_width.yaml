@@ -1,0 +1,61 @@
+run_name: feat_fno_echo_width
+data:
+  root: f:/H坏盘备份/VNA_Cls_2026/dataset_3_2_50_10
+  processed_root: f:/H坏盘备份/VNA_Cls_2026/processed
+  run_name: baseline_s21
+  subjects:
+  - S001
+  - S002
+  - S003
+  sessions:
+  - SES01
+  - SES02
+  domain: time
+enhance:
+  steps:
+  - name: channel_select
+    params:
+      drop:
+      - S_avg
+      - S22
+  - name: bootstrap_avg
+    params:
+      n_draws: 10
+      seed: 0
+  - name: diff_sub
+    params:
+      ref: group_median
+  - name: diff_div
+    params:
+      ref: group_median
+      mask_db: -60.0
+  - name: ifft_window
+    params:
+      type: kaiser
+      beta: 6.0
+  - name: delay_align
+    params: {}
+  - name: early_gate
+    params:
+      depth_db: -20.0
+      mode: crop
+      quantile: 0.9
+  - name: amp_norm
+    params:
+      mode: l2
+  - name: step_crop
+    params:
+      frac: 0.01
+  - name: time_feats
+    params:
+      mode: append
+      groups:
+      - peak_delay
+      - decay_slope
+      - cum_energy
+      - group_delay
+      - peak_seq
+      - cepstrum
+      cum_bins: 16
+      n_peaks: 5
+      cep_bins: 16
