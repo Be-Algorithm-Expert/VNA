@@ -1,7 +1,7 @@
 {
   "run_name": "feat_decay_slope",
   "domain": "time",
-  "timestamp": "2026-10-09T01:56:34",
+  "timestamp": "2026-10-09T23:15:16",
   "n_samples": 3000,
   "verdict": "USABLE",
   "usable_channels": [
@@ -78,18 +78,18 @@
     "tensor": {
       "status": "PASS",
       "lines": [
-        "X(3000, 93, 2) | finite: True | mean +1.341e-03 std 7.335e-02 absmax 7.604e-01",
-        "informative steps 93/93 (100%)"
+        "X(3000, 98, 2) | finite: True | mean -9.746e-04 std 7.146e-02 absmax 9.619e-01",
+        "informative steps 97/98 (99%)"
       ],
       "data": {
         "shape": [
           3000,
-          93,
+          98,
           2
         ],
         "n_nonfinite": 0,
-        "informative_steps": 93,
-        "informative_frac": 1.0
+        "informative_steps": 97,
+        "informative_frac": 0.99
       }
     }
   }

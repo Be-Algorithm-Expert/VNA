@@ -1,9 +1,9 @@
 {
   "run_name": "feat_fno_echo_width",
   "domain": "time",
-  "timestamp": "2026-10-09T01:58:02",
+  "timestamp": "2026-10-09T23:17:01",
   "n_samples": 3000,
-  "verdict": "USABLE",
+  "verdict": "USABLE (with warnings)",
   "usable_channels": [
     "S11"
   ],
@@ -76,20 +76,20 @@
       }
     },
     "tensor": {
-      "status": "PASS",
+      "status": "WARN",
       "lines": [
-        "X(3000, 133, 2) | finite: True | mean +5.251e-02 std 4.311e-01 absmax 1.400e+01",
-        "informative steps 101/133 (76%)"
+        "X(3000, 138, 2) | finite: True | mean +4.297e-02 std 4.290e-01 absmax 2.600e+01",
+        "only 62/138 informative steps (45% < 50%) - most inputs are near-constant for the model"
       ],
       "data": {
         "shape": [
           3000,
-          133,
+          138,
           2
         ],
         "n_nonfinite": 0,
-        "informative_steps": 101,
-        "informative_frac": 0.759
+        "informative_steps": 62,
+        "informative_frac": 0.449
       }
     }
   }

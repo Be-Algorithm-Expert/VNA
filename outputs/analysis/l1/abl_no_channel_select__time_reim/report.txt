@@ -1,0 +1,28 @@
+==== L1 separability report : abl_no_channel_select ====
+generated : 2026-10-09 22:22:16
+feature   : 94 pts x 3 ch (Re/Im interleaved) | domain=time
+dataset   : n=3000, classes=50, groups=6, chance=0.020
+
+fisher ratio (dB |S|, mean over 201 freq bins; magnitude domain)
+  S_avg 0.08 | S11 0.10 | S22 0.10
+
+LDA (Re/Im) 5-fold pooled (within-distribution ceiling)
+  S_avg 0.885 | S11 0.775 | S22 0.596
+LDA (Re/Im) leave-one-group-out (cross-session)
+  S_avg 0.019 | S11 0.021 | S22 0.017
+
+kNN k=5 (Re/Im) 5-fold pooled
+  S_avg 0.958 | S11 0.899 | S22 0.731
+kNN k=5 (Re/Im) leave-one-group-out
+  S_avg 0.014 | S11 0.011 | S22 0.010
+
+drift ratio (dB |S|; cross-session drift / within-session sep, >1 = drift dominates)
+  S_avg 1.17 | S11 1.42 | S22 1.35
+
+PCA (Re/Im, S11+S22, per-sample centered)
+  PC1+PC2 explain 28.9% variance (figures/pca_scatter.png)
+
+class-mean distance matrix (Re/Im, S11+S22)
+  mean pairwise distance 7.602 (figures/class_distance.png, class_distance.csv)
+
+figures  : outputs\analysis\l1\abl_no_channel_select__time_reim\figures/fisher_curves.png, pca_scatter.png, class_distance.png

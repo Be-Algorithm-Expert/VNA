@@ -1,0 +1,28 @@
+==== L1 separability report : abl_only_step_crop ====
+generated : 2026-10-09 22:21:54
+feature   : 82 pts x 3 ch (Re/Im interleaved) | domain=time
+dataset   : n=3000, classes=50, groups=6, chance=0.020
+
+fisher ratio (dB |S|, mean over 201 freq bins; magnitude domain)
+  S_avg 0.04 | S11 0.01 | S22 0.01
+
+LDA (Re/Im) 5-fold pooled (within-distribution ceiling)
+  S_avg 0.240 | S11 0.277 | S22 0.273
+LDA (Re/Im) leave-one-group-out (cross-session)
+  S_avg 0.025 | S11 0.022 | S22 0.016
+
+kNN k=5 (Re/Im) 5-fold pooled
+  S_avg 0.423 | S11 0.471 | S22 0.364
+kNN k=5 (Re/Im) leave-one-group-out
+  S_avg 0.022 | S11 0.016 | S22 0.020
+
+drift ratio (dB |S|; cross-session drift / within-session sep, >1 = drift dominates)
+  S_avg 2.55 | S11 13.68 | S22 8.78
+
+PCA (Re/Im, S11+S22, per-sample centered)
+  PC1+PC2 explain 76.2% variance (figures/pca_scatter.png)
+
+class-mean distance matrix (Re/Im, S11+S22)
+  mean pairwise distance 3.711 (figures/class_distance.png, class_distance.csv)
+
+figures  : outputs\analysis\l1\abl_only_step_crop__time_reim\figures/fisher_curves.png, pca_scatter.png, class_distance.png

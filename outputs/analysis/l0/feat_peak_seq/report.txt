@@ -1,5 +1,5 @@
 ==== L0 health report : feat_peak_seq ====
-generated : 2026-10-09 01:57:18 (3s scan)
+generated : 2026-10-09 23:15:56 (3s scan)
 dataset   : 3000 samples | ['S11'] | tensor domain=time
 
 [1] finite (raw S)    . PASS  0 file(s) with NaN/Inf in raw S
@@ -13,8 +13,8 @@ dataset   : 3000 samples | ['S11'] | tensor domain=time
 
 [5] channel drift     . PASS  max corr spread 0.00 (threshold 0.15) | max group-mean dev 0.8 dB (threshold 3.0 dB)
 
-[6] tensor (layer 2)  . PASS  X(3000, 97, 2) | finite: True | mean +1.465e-02 std 1.179e-01 absmax 1.000e+00
-      informative steps 97/97 (100%)
+[6] tensor (layer 2)  . PASS  X(3000, 102, 2) | finite: True | mean +6.515e-03 std 9.346e-02 absmax 1.000e+00
+      informative steps 102/102 (100%)
 
 verdict         : USABLE
 usable channels : S11

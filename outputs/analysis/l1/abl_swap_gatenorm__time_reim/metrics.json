@@ -1,0 +1,33 @@
+{
+  "run_name": "abl_swap_gatenorm",
+  "domain": "time",
+  "feature": "reim",
+  "n_samples": 3000,
+  "n_classes": 50,
+  "fisher_mean": {
+    "S11": 0.065,
+    "S22": 0.099
+  },
+  "lda_pooled": {
+    "S11": 0.696,
+    "S22": 0.5537
+  },
+  "lda_logo": {
+    "S11": 0.0183,
+    "S22": 0.0237
+  },
+  "knn_pooled": {
+    "S11": 0.8027,
+    "S22": 0.7133
+  },
+  "knn_logo": {
+    "S11": 0.0187,
+    "S22": 0.0197
+  },
+  "drift_ratio": {
+    "S11": 1.962,
+    "S22": 1.34
+  },
+  "pca_pc12_variance": 0.49,
+  "class_distance_mean": 7.208
+}

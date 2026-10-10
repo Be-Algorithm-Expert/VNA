@@ -1,28 +1,28 @@
 ==== L1 separability report : feat_fall_replace ====
-generated : 2026-10-05 02:58:29
+generated : 2026-10-09 23:16:42
 feature   : 42 pts x 1 ch (Re/Im interleaved) | domain=time
 dataset   : n=3000, classes=50, groups=6, chance=0.020
 
 fisher ratio (dB |S|, mean over 201 freq bins; magnitude domain)
-  S11 0.08
+  S11 0.10
 
 LDA (Re/Im) 5-fold pooled (within-distribution ceiling)
-  S11 0.270
+  S11 0.284
 LDA (Re/Im) leave-one-group-out (cross-session)
-  S11 0.033
+  S11 0.022
 
 kNN k=5 (Re/Im) 5-fold pooled
-  S11 0.770
+  S11 0.732
 kNN k=5 (Re/Im) leave-one-group-out
-  S11 0.033
+  S11 0.027
 
 drift ratio (dB |S|; cross-session drift / within-session sep, >1 = drift dominates)
-  S11 1.61
+  S11 0.94
 
 PCA (Re/Im, S11+S22, per-sample centered)
-  PC1+PC2 explain 90.2% variance (figures/pca_scatter.png)
+  PC1+PC2 explain 93.9% variance (figures/pca_scatter.png)
 
 class-mean distance matrix (Re/Im, S11+S22)
-  mean pairwise distance 2.789 (figures/class_distance.png, class_distance.csv)
+  mean pairwise distance 3.710 (figures/class_distance.png, class_distance.csv)
 
 figures  : outputs\analysis\l1\feat_fall_replace__time_reim\figures/fisher_curves.png, pca_scatter.png, class_distance.png

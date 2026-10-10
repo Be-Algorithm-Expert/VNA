@@ -1,5 +1,5 @@
 ==== L0 health report : feat_decay_slope ====
-generated : 2026-10-09 01:56:34 (3s scan)
+generated : 2026-10-09 23:15:16 (3s scan)
 dataset   : 3000 samples | ['S11'] | tensor domain=time
 
 [1] finite (raw S)    . PASS  0 file(s) with NaN/Inf in raw S
@@ -13,8 +13,8 @@ dataset   : 3000 samples | ['S11'] | tensor domain=time
 
 [5] channel drift     . PASS  max corr spread 0.00 (threshold 0.15) | max group-mean dev 0.8 dB (threshold 3.0 dB)
 
-[6] tensor (layer 2)  . PASS  X(3000, 93, 2) | finite: True | mean +1.341e-03 std 7.335e-02 absmax 7.604e-01
-      informative steps 93/93 (100%)
+[6] tensor (layer 2)  . PASS  X(3000, 98, 2) | finite: True | mean -9.746e-04 std 7.146e-02 absmax 9.619e-01
+      informative steps 97/98 (99%)
 
 verdict         : USABLE
 usable channels : S11

@@ -1,7 +1,7 @@
 {
   "run_name": "feat_fno_peak_delay",
   "domain": "time",
-  "timestamp": "2026-10-09T01:57:47",
+  "timestamp": "2026-10-09T23:16:48",
   "n_samples": 3000,
   "verdict": "USABLE (with warnings)",
   "usable_channels": [
@@ -78,18 +78,18 @@
     "tensor": {
       "status": "WARN",
       "lines": [
-        "X(3000, 133, 2) | finite: True | mean +7.823e-02 std 7.166e-01 absmax 2.900e+01",
-        "only 66/133 informative steps (50% < 50%) - most inputs are near-constant for the model"
+        "X(3000, 138, 2) | finite: True | mean +5.925e-02 std 5.735e-01 absmax 3.200e+01",
+        "only 59/138 informative steps (43% < 50%) - most inputs are near-constant for the model"
       ],
       "data": {
         "shape": [
           3000,
-          133,
+          138,
           2
         ],
         "n_nonfinite": 0,
-        "informative_steps": 66,
-        "informative_frac": 0.496
+        "informative_steps": 59,
+        "informative_frac": 0.428
       }
     }
   }

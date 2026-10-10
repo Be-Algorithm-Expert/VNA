@@ -5,23 +5,23 @@
   "n_samples": 3000,
   "n_classes": 50,
   "fisher_mean": {
-    "S11": 0.075
+    "S11": 0.093
   },
   "lda_pooled": {
-    "S11": 0.8207
+    "S11": 0.914
   },
   "lda_logo": {
-    "S11": 0.0147
+    "S11": 0.0167
   },
   "knn_pooled": {
-    "S11": 0.881
+    "S11": 0.882
   },
   "knn_logo": {
-    "S11": 0.0177
+    "S11": 0.018
   },
   "drift_ratio": {
-    "S11": 1.562
+    "S11": 1.057
   },
-  "pca_pc12_variance": 0.594,
-  "class_distance_mean": 5.512
+  "pca_pc12_variance": 0.731,
+  "class_distance_mean": 6.995
 }

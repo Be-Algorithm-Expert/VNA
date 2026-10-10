@@ -1,0 +1,39 @@
+{
+  "run_name": "abl_only_diff_div",
+  "domain": "time",
+  "feature": "reim",
+  "n_samples": 3000,
+  "n_classes": 50,
+  "fisher_mean": {
+    "S_avg": 0.002,
+    "S11": 0.128,
+    "S22": 0.079
+  },
+  "lda_pooled": {
+    "S_avg": 0.217,
+    "S11": 0.4007,
+    "S22": 0.3483
+  },
+  "lda_logo": {
+    "S_avg": 0.0207,
+    "S11": 0.0163,
+    "S22": 0.0323
+  },
+  "knn_pooled": {
+    "S_avg": 0.3473,
+    "S11": 0.4117,
+    "S22": 0.4033
+  },
+  "knn_logo": {
+    "S_avg": 0.0313,
+    "S11": 0.028,
+    "S22": 0.0163
+  },
+  "drift_ratio": {
+    "S_avg": 7.347,
+    "S11": 1.094,
+    "S22": 1.28
+  },
+  "pca_pc12_variance": 0.588,
+  "class_distance_mean": 12.275
+}

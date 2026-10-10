@@ -1,7 +1,7 @@
 {
   "run_name": "feat_cepstrum",
   "domain": "time",
-  "timestamp": "2026-10-09T01:57:32",
+  "timestamp": "2026-10-09T23:16:08",
   "n_samples": 3000,
   "verdict": "USABLE",
   "usable_channels": [
@@ -78,18 +78,18 @@
     "tensor": {
       "status": "PASS",
       "lines": [
-        "X(3000, 108, 2) | finite: True | mean -2.557e-02 std 3.161e-01 absmax 6.887e+00",
-        "informative steps 105/108 (97%)"
+        "X(3000, 113, 2) | finite: True | mean -2.391e-02 std 2.784e-01 absmax 6.527e+00",
+        "informative steps 108/113 (96%)"
       ],
       "data": {
         "shape": [
           3000,
-          108,
+          113,
           2
         ],
         "n_nonfinite": 0,
-        "informative_steps": 105,
-        "informative_frac": 0.972
+        "informative_steps": 108,
+        "informative_frac": 0.956
       }
     }
   }

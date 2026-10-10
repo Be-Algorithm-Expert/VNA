@@ -1,7 +1,7 @@
 {
   "run_name": "feat_f0",
   "domain": "time",
-  "timestamp": "2026-10-05T02:57:12",
+  "timestamp": "2026-10-09T23:14:36",
   "n_samples": 3000,
   "verdict": "USABLE",
   "usable_channels": [
@@ -78,17 +78,17 @@
     "tensor": {
       "status": "PASS",
       "lines": [
-        "X(3000, 92, 2) | finite: True | mean +1.521e-03 std 7.371e-02 absmax 7.604e-01",
-        "informative steps 92/92 (100%)"
+        "X(3000, 97, 2) | finite: True | mean -8.252e-04 std 7.179e-02 absmax 9.619e-01",
+        "informative steps 97/97 (100%)"
       ],
       "data": {
         "shape": [
           3000,
-          92,
+          97,
           2
         ],
         "n_nonfinite": 0,
-        "informative_steps": 92,
+        "informative_steps": 97,
         "informative_frac": 1.0
       }
     }

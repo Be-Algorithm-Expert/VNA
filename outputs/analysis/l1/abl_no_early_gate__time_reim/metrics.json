@@ -1,0 +1,33 @@
+{
+  "run_name": "abl_no_early_gate",
+  "domain": "time",
+  "feature": "reim",
+  "n_samples": 3000,
+  "n_classes": 50,
+  "fisher_mean": {
+    "S11": 0.069,
+    "S22": 0.092
+  },
+  "lda_pooled": {
+    "S11": 0.8997,
+    "S22": 0.8203
+  },
+  "lda_logo": {
+    "S11": 0.0223,
+    "S22": 0.0217
+  },
+  "knn_pooled": {
+    "S11": 0.892,
+    "S22": 0.721
+  },
+  "knn_logo": {
+    "S11": 0.0197,
+    "S22": 0.012
+  },
+  "drift_ratio": {
+    "S11": 1.969,
+    "S22": 1.433
+  },
+  "pca_pc12_variance": 0.401,
+  "class_distance_mean": 11.917
+}

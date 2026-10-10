@@ -1,0 +1,27 @@
+==== L0 health report : abl_swap_subdiv ====
+generated : 2026-10-09 22:24:30 (3s scan)
+dataset   : 3000 samples | ['S11', 'S22'] | tensor domain=time
+
+[1] finite (raw S)    . PASS  0 file(s) with NaN/Inf in raw S
+
+[2] files & freq axis . PASS  6 groups x 500 files | shape (201, 3) | df=25.0 MHz
+      freq axes identical & monotonic across all files
+
+[3] dynamic range     . PASS        S11           median    -3.4 dB | P1..P99   -9.1..  -0.8 dB |    0% pts < -90 dB
+            S22           median    -1.3 dB | P1..P99  -14.4..  15.9 dB |    0% pts < -90 dB
+
+[4] sample outliers   . PASS  0 flagged sample(s) (energy outliers: 0, exact duplicates: 0)
+
+[5] channel drift     . WARN  max corr spread 1.41 (threshold 0.15) | max group-mean dev 7.2 dB (threshold 3.0 dB)
+            corr(S11,S22) group medians [-0.51, 0.84, -0.47, -0.43, -0.39, 0.9] (spread 1.41 > 0.15)
+            S001/SES02 mean curve deviates 6.3 dB (max channel) from global mean
+            S003/SES01 mean curve deviates 3.0 dB (max channel) from global mean
+            S003/SES02 mean curve deviates 7.2 dB (max channel) from global mean
+
+[6] tensor (layer 2)  . PASS  X(3000, 96, 4) | finite: True | mean +1.668e-04 std 7.217e-02 absmax 9.619e-01
+      informative steps 96/96 (100%)
+
+verdict         : USABLE (with warnings)
+usable channels : S11, S22
+dead channels   : (none)
+flagged samples : 0  (details: flagged_samples.csv)

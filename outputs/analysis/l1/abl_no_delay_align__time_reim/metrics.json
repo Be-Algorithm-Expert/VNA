@@ -1,0 +1,33 @@
+{
+  "run_name": "abl_no_delay_align",
+  "domain": "time",
+  "feature": "reim",
+  "n_samples": 3000,
+  "n_classes": 50,
+  "fisher_mean": {
+    "S11": 0.068,
+    "S22": 0.091
+  },
+  "lda_pooled": {
+    "S11": 0.8027,
+    "S22": 0.6353
+  },
+  "lda_logo": {
+    "S11": 0.0223,
+    "S22": 0.0177
+  },
+  "knn_pooled": {
+    "S11": 0.9013,
+    "S22": 0.7477
+  },
+  "knn_logo": {
+    "S11": 0.0263,
+    "S22": 0.016
+  },
+  "drift_ratio": {
+    "S11": 1.751,
+    "S22": 1.651
+  },
+  "pca_pc12_variance": 0.264,
+  "class_distance_mean": 7.823
+}

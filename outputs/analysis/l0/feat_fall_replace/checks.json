@@ -1,7 +1,7 @@
 {
   "run_name": "feat_fall_replace",
   "domain": "time",
-  "timestamp": "2026-10-05T02:58:19",
+  "timestamp": "2026-10-09T23:16:35",
   "n_samples": 3000,
   "verdict": "USABLE (with warnings)",
   "usable_channels": [
@@ -78,8 +78,8 @@
     "tensor": {
       "status": "WARN",
       "lines": [
-        "X(3000, 42, 2) | finite: True | mean +2.757e-01 std 1.310e+00 absmax 2.900e+01",
-        "only 20/42 informative steps (48% < 50%) - most inputs are near-constant for the model"
+        "X(3000, 42, 2) | finite: True | mean +2.098e-01 std 1.123e+00 absmax 3.200e+01",
+        "only 16/42 informative steps (38% < 50%) - most inputs are near-constant for the model"
       ],
       "data": {
         "shape": [
@@ -88,8 +88,8 @@
           2
         ],
         "n_nonfinite": 0,
-        "informative_steps": 20,
-        "informative_frac": 0.476
+        "informative_steps": 16,
+        "informative_frac": 0.381
       }
     }
   }

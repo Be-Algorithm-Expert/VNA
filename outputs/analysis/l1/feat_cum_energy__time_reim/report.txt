@@ -1,28 +1,28 @@
 ==== L1 separability report : feat_cum_energy ====
-generated : 2026-10-09 01:56:58
-feature   : 108 pts x 1 ch (Re/Im interleaved) | domain=time
+generated : 2026-10-09 23:15:37
+feature   : 113 pts x 1 ch (Re/Im interleaved) | domain=time
 dataset   : n=3000, classes=50, groups=6, chance=0.020
 
 fisher ratio (dB |S|, mean over 201 freq bins; magnitude domain)
-  S11 0.07
+  S11 0.09
 
 LDA (Re/Im) 5-fold pooled (within-distribution ceiling)
-  S11 0.773
+  S11 0.900
 LDA (Re/Im) leave-one-group-out (cross-session)
-  S11 0.016
+  S11 0.019
 
 kNN k=5 (Re/Im) 5-fold pooled
-  S11 0.899
+  S11 0.903
 kNN k=5 (Re/Im) leave-one-group-out
-  S11 0.018
+  S11 0.012
 
 drift ratio (dB |S|; cross-session drift / within-session sep, >1 = drift dominates)
-  S11 1.64
+  S11 1.33
 
 PCA (Re/Im, S11+S22, per-sample centered)
-  PC1+PC2 explain 34.5% variance (figures/pca_scatter.png)
+  PC1+PC2 explain 37.1% variance (figures/pca_scatter.png)
 
 class-mean distance matrix (Re/Im, S11+S22)
-  mean pairwise distance 5.137 (figures/class_distance.png, class_distance.csv)
+  mean pairwise distance 6.560 (figures/class_distance.png, class_distance.csv)
 
 figures  : outputs\analysis\l1\feat_cum_energy__time_reim\figures/fisher_curves.png, pca_scatter.png, class_distance.png

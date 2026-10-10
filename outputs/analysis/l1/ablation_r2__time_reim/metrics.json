@@ -1,0 +1,33 @@
+{
+  "run_name": "ablation_r2",
+  "domain": "time",
+  "feature": "reim",
+  "n_samples": 3000,
+  "n_classes": 50,
+  "fisher_mean": {
+    "S11": 0.032,
+    "S22": 0.036
+  },
+  "lda_pooled": {
+    "S11": 0.988,
+    "S22": 0.975
+  },
+  "lda_logo": {
+    "S11": 0.0193,
+    "S22": 0.028
+  },
+  "knn_pooled": {
+    "S11": 0.7363,
+    "S22": 0.7417
+  },
+  "knn_logo": {
+    "S11": 0.0183,
+    "S22": 0.0233
+  },
+  "drift_ratio": {
+    "S11": 9.89,
+    "S22": 6.418
+  },
+  "pca_pc12_variance": 0.775,
+  "class_distance_mean": 6.969
+}

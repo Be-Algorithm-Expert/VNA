@@ -1,7 +1,7 @@
 {
   "run_name": "feat_group_delay",
   "domain": "time",
-  "timestamp": "2026-10-09T01:57:03",
+  "timestamp": "2026-10-09T23:15:43",
   "n_samples": 3000,
   "verdict": "USABLE",
   "usable_channels": [
@@ -78,17 +78,17 @@
     "tensor": {
       "status": "PASS",
       "lines": [
-        "X(3000, 94, 2) | finite: True | mean +2.993e-03 std 7.590e-02 absmax 9.699e-01",
-        "informative steps 94/94 (100%)"
+        "X(3000, 99, 2) | finite: True | mean -6.941e-04 std 7.119e-02 absmax 9.619e-01",
+        "informative steps 99/99 (100%)"
       ],
       "data": {
         "shape": [
           3000,
-          94,
+          99,
           2
         ],
         "n_nonfinite": 0,
-        "informative_steps": 94,
+        "informative_steps": 99,
         "informative_frac": 1.0
       }
     }

@@ -1,5 +1,5 @@
 ==== L0 health report : feat_fno_cum_energy ====
-generated : 2026-10-09 01:58:33 (3s scan)
+generated : 2026-10-09 23:17:29 (3s scan)
 dataset   : 3000 samples | ['S11'] | tensor domain=time
 
 [1] finite (raw S)    . PASS  0 file(s) with NaN/Inf in raw S
@@ -13,10 +13,10 @@ dataset   : 3000 samples | ['S11'] | tensor domain=time
 
 [5] channel drift     . PASS  max corr spread 0.00 (threshold 0.15) | max group-mean dev 0.8 dB (threshold 3.0 dB)
 
-[6] tensor (layer 2)  . PASS  X(3000, 118, 2) | finite: True | mean +3.976e-02 std 7.648e-01 absmax 2.900e+01
-      informative steps 62/118 (53%)
+[6] tensor (layer 2)  . WARN  X(3000, 123, 2) | finite: True | mean +1.133e-02 std 6.268e-01 absmax 3.200e+01
+      only 54/123 informative steps (44% < 50%) - most inputs are near-constant for the model
 
-verdict         : USABLE
+verdict         : USABLE (with warnings)
 usable channels : S11
 dead channels   : (none)
 flagged samples : 0  (details: flagged_samples.csv)

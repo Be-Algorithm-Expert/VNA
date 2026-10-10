@@ -1,9 +1,9 @@
 {
   "run_name": "feat_fno_cum_energy",
   "domain": "time",
-  "timestamp": "2026-10-09T01:58:33",
+  "timestamp": "2026-10-09T23:17:29",
   "n_samples": 3000,
-  "verdict": "USABLE",
+  "verdict": "USABLE (with warnings)",
   "usable_channels": [
     "S11"
   ],
@@ -76,20 +76,20 @@
       }
     },
     "tensor": {
-      "status": "PASS",
+      "status": "WARN",
       "lines": [
-        "X(3000, 118, 2) | finite: True | mean +3.976e-02 std 7.648e-01 absmax 2.900e+01",
-        "informative steps 62/118 (53%)"
+        "X(3000, 123, 2) | finite: True | mean +1.133e-02 std 6.268e-01 absmax 3.200e+01",
+        "only 54/123 informative steps (44% < 50%) - most inputs are near-constant for the model"
       ],
       "data": {
         "shape": [
           3000,
-          118,
+          123,
           2
         ],
         "n_nonfinite": 0,
-        "informative_steps": 62,
-        "informative_frac": 0.525
+        "informative_steps": 54,
+        "informative_frac": 0.439
       }
     }
   }

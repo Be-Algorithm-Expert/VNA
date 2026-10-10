@@ -1,7 +1,7 @@
 {
   "run_name": "feat_peak_seq",
   "domain": "time",
-  "timestamp": "2026-10-09T01:57:18",
+  "timestamp": "2026-10-09T23:15:56",
   "n_samples": 3000,
   "verdict": "USABLE",
   "usable_channels": [
@@ -78,17 +78,17 @@
     "tensor": {
       "status": "PASS",
       "lines": [
-        "X(3000, 97, 2) | finite: True | mean +1.465e-02 std 1.179e-01 absmax 1.000e+00",
-        "informative steps 97/97 (100%)"
+        "X(3000, 102, 2) | finite: True | mean +6.515e-03 std 9.346e-02 absmax 1.000e+00",
+        "informative steps 102/102 (100%)"
       ],
       "data": {
         "shape": [
           3000,
-          97,
+          102,
           2
         ],
         "n_nonfinite": 0,
-        "informative_steps": 97,
+        "informative_steps": 102,
         "informative_frac": 1.0
       }
     }

@@ -1,18 +1,18 @@
 ﻿run_name,kind,verdict,n_warn,informative_frac,tensor_shape,lda_logo_S11,knn_logo_S11,lda_pooled_S11,knn_pooled_S11,drift_ratio_S11,fisher_mean_S11
-feat_f0,baseline,USABLE,0,1.0,3000x92x2,0.019,0.0137,0.7563,0.898,1.631,0.072
-feat_peak_delay,single,USABLE,0,0.871,3000x93x2,0.0177,0.0123,0.7633,0.8977,1.605,0.072
-feat_echo_width,single,USABLE,0,0.516,3000x93x2,0.0177,0.013,0.7647,0.8953,1.629,0.072
-feat_decay_slope,single,USABLE,0,1.0,3000x93x2,0.019,0.014,0.7573,0.8967,1.63,0.072
-feat_cum_energy,single,USABLE,0,0.981,3000x108x2,0.0157,0.0177,0.7727,0.899,1.643,0.071
-feat_group_delay,single,USABLE,0,1.0,3000x94x2,0.019,0.0147,0.7633,0.8973,1.651,0.071
-feat_peak_seq,single,USABLE,0,1.0,3000x97x2,0.0213,0.0153,0.7803,0.8877,1.626,0.072
-feat_cepstrum,single,USABLE,0,0.972,3000x108x2,0.0227,0.0123,0.7997,0.88,1.504,0.077
-feat_fall,all,USABLE,0,0.5,3000x134x2,0.0147,0.02,0.8297,0.8753,1.56,0.075
-feat_fall_replace,mode,USABLE (with warnings),1,0.476,3000x42x2,0.0327,0.0333,0.27,0.7697,1.615,0.081
-feat_fno_peak_delay,removed,USABLE (with warnings),1,0.496,3000x133x2,0.0143,0.0203,0.8297,0.8753,1.538,0.075
-feat_fno_echo_width,removed,USABLE,0,0.759,3000x133x2,0.0137,0.0193,0.8297,0.8773,1.561,0.075
-feat_fno_decay_slope,removed,USABLE,0,0.504,3000x133x2,0.017,0.0193,0.8263,0.8757,1.56,0.075
-feat_fno_cum_energy,removed,USABLE,0,0.525,3000x118x2,0.0237,0.0197,0.8187,0.8753,1.557,0.076
-feat_fno_group_delay,removed,USABLE (with warnings),1,0.492,3000x132x2,0.0187,0.0217,0.826,0.875,1.55,0.076
-feat_fno_peak_seq,removed,USABLE (with warnings),1,0.481,3000x129x2,0.0147,0.0177,0.8207,0.881,1.562,0.075
-feat_fno_cepstrum,removed,USABLE,0,0.517,3000x118x2,0.018,0.021,0.8017,0.8893,1.614,0.07
+feat_f0,baseline,USABLE,0,1.0,3000x97x2,0.0183,0.0133,0.892,0.907,1.336,0.092
+feat_peak_delay,single,USABLE (with warnings),1,0.469,3000x98x2,0.0183,0.0133,0.8923,0.9037,1.056,0.093
+feat_echo_width,single,USABLE (with warnings),1,0.459,3000x98x2,0.0183,0.0127,0.8913,0.9057,1.332,0.093
+feat_decay_slope,single,USABLE,0,0.99,3000x98x2,0.0187,0.0137,0.895,0.905,1.336,0.092
+feat_cum_energy,single,USABLE,0,0.947,3000x113x2,0.019,0.0123,0.8997,0.9033,1.33,0.092
+feat_group_delay,single,USABLE,0,1.0,3000x99x2,0.0213,0.011,0.8967,0.9063,1.341,0.092
+feat_peak_seq,single,USABLE,0,1.0,3000x102x2,0.0187,0.01,0.8957,0.9047,1.329,0.093
+feat_cepstrum,single,USABLE,0,0.956,3000x113x2,0.0193,0.013,0.9053,0.8847,1.307,0.094
+feat_fall,all,USABLE (with warnings),1,0.432,3000x139x2,0.0123,0.016,0.9123,0.88,1.059,0.094
+feat_fall_replace,mode,USABLE (with warnings),1,0.381,3000x42x2,0.0217,0.0267,0.2837,0.732,0.935,0.097
+feat_fno_peak_delay,removed,USABLE (with warnings),1,0.428,3000x138x2,0.013,0.016,0.9143,0.8823,1.299,0.094
+feat_fno_echo_width,removed,USABLE (with warnings),1,0.449,3000x138x2,0.0163,0.0167,0.913,0.8807,1.059,0.094
+feat_fno_decay_slope,removed,USABLE (with warnings),1,0.435,3000x138x2,0.0133,0.0157,0.913,0.8803,1.059,0.094
+feat_fno_cum_energy,removed,USABLE (with warnings),1,0.439,3000x123x2,0.0177,0.0153,0.9077,0.881,1.059,0.094
+feat_fno_group_delay,removed,USABLE (with warnings),1,0.438,3000x137x2,0.0133,0.011,0.9133,0.882,1.056,0.094
+feat_fno_peak_seq,removed,USABLE (with warnings),1,0.41,3000x134x2,0.0167,0.018,0.914,0.882,1.057,0.093
+feat_fno_cepstrum,removed,USABLE (with warnings),1,0.463,3000x123x2,0.021,0.0103,0.9043,0.898,1.061,0.093

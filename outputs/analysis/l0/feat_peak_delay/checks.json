@@ -1,9 +1,9 @@
 {
   "run_name": "feat_peak_delay",
   "domain": "time",
-  "timestamp": "2026-10-09T01:55:51",
+  "timestamp": "2026-10-09T23:14:50",
   "n_samples": 3000,
-  "verdict": "USABLE",
+  "verdict": "USABLE (with warnings)",
   "usable_channels": [
     "S11"
   ],
@@ -76,20 +76,20 @@
       }
     },
     "tensor": {
-      "status": "PASS",
+      "status": "WARN",
       "lines": [
-        "X(3000, 93, 2) | finite: True | mean +1.562e-02 std 2.778e-01 absmax 1.400e+01",
-        "informative steps 81/93 (87%)"
+        "X(3000, 98, 2) | finite: True | mean +4.841e-03 std 3.185e-01 absmax 2.600e+01",
+        "only 46/98 informative steps (47% < 50%) - most inputs are near-constant for the model"
       ],
       "data": {
         "shape": [
           3000,
-          93,
+          98,
           2
         ],
         "n_nonfinite": 0,
-        "informative_steps": 81,
-        "informative_frac": 0.871
+        "informative_steps": 46,
+        "informative_frac": 0.469
       }
     }
   }

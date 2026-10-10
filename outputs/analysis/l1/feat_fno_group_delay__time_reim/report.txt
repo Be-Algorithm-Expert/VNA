@@ -1,28 +1,28 @@
 ==== L1 separability report : feat_fno_group_delay ====
-generated : 2026-10-09 01:59:02
-feature   : 132 pts x 1 ch (Re/Im interleaved) | domain=time
+generated : 2026-10-09 23:17:50
+feature   : 137 pts x 1 ch (Re/Im interleaved) | domain=time
 dataset   : n=3000, classes=50, groups=6, chance=0.020
 
 fisher ratio (dB |S|, mean over 201 freq bins; magnitude domain)
-  S11 0.08
+  S11 0.09
 
 LDA (Re/Im) 5-fold pooled (within-distribution ceiling)
-  S11 0.826
+  S11 0.913
 LDA (Re/Im) leave-one-group-out (cross-session)
-  S11 0.019
+  S11 0.013
 
 kNN k=5 (Re/Im) 5-fold pooled
-  S11 0.875
+  S11 0.882
 kNN k=5 (Re/Im) leave-one-group-out
-  S11 0.022
+  S11 0.011
 
 drift ratio (dB |S|; cross-session drift / within-session sep, >1 = drift dominates)
-  S11 1.55
+  S11 1.06
 
 PCA (Re/Im, S11+S22, per-sample centered)
-  PC1+PC2 explain 60.8% variance (figures/pca_scatter.png)
+  PC1+PC2 explain 74.2% variance (figures/pca_scatter.png)
 
 class-mean distance matrix (Re/Im, S11+S22)
-  mean pairwise distance 5.549 (figures/class_distance.png, class_distance.csv)
+  mean pairwise distance 7.049 (figures/class_distance.png, class_distance.csv)
 
 figures  : outputs\analysis\l1\feat_fno_group_delay__time_reim\figures/fisher_curves.png, pca_scatter.png, class_distance.png

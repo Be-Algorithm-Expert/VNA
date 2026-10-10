@@ -1,0 +1,28 @@
+==== L1 separability report : ablation_r8 ====
+generated : 2026-10-09 22:19:01
+feature   : 83 pts x 2 ch (Re/Im interleaved) | domain=time
+dataset   : n=3000, classes=50, groups=6, chance=0.020
+
+fisher ratio (dB |S|, mean over 201 freq bins; magnitude domain)
+  S11 0.08 | S22 0.08
+
+LDA (Re/Im) 5-fold pooled (within-distribution ceiling)
+  S11 0.752 | S22 0.655
+LDA (Re/Im) leave-one-group-out (cross-session)
+  S11 0.015 | S22 0.019
+
+kNN k=5 (Re/Im) 5-fold pooled
+  S11 0.881 | S22 0.810
+kNN k=5 (Re/Im) leave-one-group-out
+  S11 0.017 | S22 0.033
+
+drift ratio (dB |S|; cross-session drift / within-session sep, >1 = drift dominates)
+  S11 1.51 | S22 1.76
+
+PCA (Re/Im, S11+S22, per-sample centered)
+  PC1+PC2 explain 35.6% variance (figures/pca_scatter.png)
+
+class-mean distance matrix (Re/Im, S11+S22)
+  mean pairwise distance 5.298 (figures/class_distance.png, class_distance.csv)
+
+figures  : outputs\analysis\l1\ablation_r8__time_reim\figures/fisher_curves.png, pca_scatter.png, class_distance.png

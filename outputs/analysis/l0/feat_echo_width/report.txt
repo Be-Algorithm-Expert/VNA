@@ -1,5 +1,5 @@
 ==== L0 health report : feat_echo_width ====
-generated : 2026-10-09 01:56:17 (3s scan)
+generated : 2026-10-09 23:15:03 (3s scan)
 dataset   : 3000 samples | ['S11'] | tensor domain=time
 
 [1] finite (raw S)    . PASS  0 file(s) with NaN/Inf in raw S
@@ -13,10 +13,10 @@ dataset   : 3000 samples | ['S11'] | tensor domain=time
 
 [5] channel drift     . PASS  max corr spread 0.00 (threshold 0.15) | max group-mean dev 0.8 dB (threshold 3.0 dB)
 
-[6] tensor (layer 2)  . PASS  X(3000, 93, 2) | finite: True | mean +5.240e-02 std 7.403e-01 absmax 2.900e+01
-      informative steps 48/93 (52%)
+[6] tensor (layer 2)  . WARN  X(3000, 98, 2) | finite: True | mean +2.776e-02 std 5.541e-01 absmax 3.200e+01
+      only 45/98 informative steps (46% < 50%) - most inputs are near-constant for the model
 
-verdict         : USABLE
+verdict         : USABLE (with warnings)
 usable channels : S11
 dead channels   : (none)
 flagged samples : 0  (details: flagged_samples.csv)

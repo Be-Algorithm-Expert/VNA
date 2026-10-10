@@ -1,0 +1,28 @@
+==== L1 separability report : abl_only_delay_align ====
+generated : 2026-10-09 22:21:10
+feature   : 201 pts x 3 ch (Re/Im interleaved) | domain=time
+dataset   : n=3000, classes=50, groups=6, chance=0.020
+
+fisher ratio (dB |S|, mean over 201 freq bins; magnitude domain)
+  S_avg 0.04 | S11 0.05 | S22 0.02
+
+LDA (Re/Im) 5-fold pooled (within-distribution ceiling)
+  S_avg 0.208 | S11 0.377 | S22 0.314
+LDA (Re/Im) leave-one-group-out (cross-session)
+  S_avg 0.018 | S11 0.025 | S22 0.019
+
+kNN k=5 (Re/Im) 5-fold pooled
+  S_avg 0.209 | S11 0.436 | S22 0.360
+kNN k=5 (Re/Im) leave-one-group-out
+  S_avg 0.020 | S11 0.020 | S22 0.019
+
+drift ratio (dB |S|; cross-session drift / within-session sep, >1 = drift dominates)
+  S_avg 1.57 | S11 5.87 | S22 4.59
+
+PCA (Re/Im, S11+S22, per-sample centered)
+  PC1+PC2 explain 68.3% variance (figures/pca_scatter.png)
+
+class-mean distance matrix (Re/Im, S11+S22)
+  mean pairwise distance 7.214 (figures/class_distance.png, class_distance.csv)
+
+figures  : outputs\analysis\l1\abl_only_delay_align__time_reim\figures/fisher_curves.png, pca_scatter.png, class_distance.png

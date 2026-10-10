@@ -1,5 +1,5 @@
 ==== L0 health report : feat_fno_peak_delay ====
-generated : 2026-10-09 01:57:47 (3s scan)
+generated : 2026-10-09 23:16:48 (3s scan)
 dataset   : 3000 samples | ['S11'] | tensor domain=time
 
 [1] finite (raw S)    . PASS  0 file(s) with NaN/Inf in raw S
@@ -13,8 +13,8 @@ dataset   : 3000 samples | ['S11'] | tensor domain=time
 
 [5] channel drift     . PASS  max corr spread 0.00 (threshold 0.15) | max group-mean dev 0.8 dB (threshold 3.0 dB)
 
-[6] tensor (layer 2)  . WARN  X(3000, 133, 2) | finite: True | mean +7.823e-02 std 7.166e-01 absmax 2.900e+01
-      only 66/133 informative steps (50% < 50%) - most inputs are near-constant for the model
+[6] tensor (layer 2)  . WARN  X(3000, 138, 2) | finite: True | mean +5.925e-02 std 5.735e-01 absmax 3.200e+01
+      only 59/138 informative steps (43% < 50%) - most inputs are near-constant for the model
 
 verdict         : USABLE (with warnings)
 usable channels : S11

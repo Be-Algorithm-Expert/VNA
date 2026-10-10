@@ -1,0 +1,158 @@
+{
+  "run_name": "abl_no_channel_select",
+  "domain": "time",
+  "timestamp": "2026-10-09T22:22:00",
+  "n_samples": 3000,
+  "verdict": "USABLE (with warnings)",
+  "usable_channels": [
+    "S11",
+    "S22"
+  ],
+  "dead_channels": [
+    "S_avg"
+  ],
+  "thresholds": {
+    "noise_floor_db": -90.0,
+    "dead_chan_frac": 0.5,
+    "weak_chan_median_db": -60.0,
+    "energy_dev_db": 20.0,
+    "max_flagged_frac": 0.1,
+    "corr_drift": 0.15,
+    "mean_drift_db": 3.0
+  },
+  "checks": {
+    "finite": {
+      "status": "PASS",
+      "lines": [
+        "0 file(s) with NaN/Inf in raw S"
+      ],
+      "data": {
+        "n_bad": 0
+      }
+    },
+    "files_axis": {
+      "status": "PASS",
+      "lines": [
+        "6 groups x 500 files | shape (201, 3) | df=25.0 MHz",
+        "freq axes identical & monotonic across all files"
+      ],
+      "data": {
+        "n_groups": 6,
+        "n_files": 3000,
+        "missing_groups": []
+      }
+    },
+    "dynamic_range": {
+      "status": "WARN",
+      "lines": [
+        "      S_avg    DEAD median   -83.7 dB | P1..P99 -107.1.. -56.4 dB |   29% pts < -90 dB",
+        "      S11           median    -3.4 dB | P1..P99   -9.1..  -0.8 dB |    0% pts < -90 dB",
+        "      S22           median    -1.3 dB | P1..P99  -14.4..  15.9 dB |    0% pts < -90 dB"
+      ],
+      "data": {
+        "S_avg": {
+          "median_db": -83.7,
+          "p1_db": -107.1,
+          "p99_db": -56.4,
+          "frac_below_floor": 0.287,
+          "dead": true
+        },
+        "S11": {
+          "median_db": -3.4,
+          "p1_db": -9.1,
+          "p99_db": -0.8,
+          "frac_below_floor": 0.0,
+          "dead": false
+        },
+        "S22": {
+          "median_db": -1.3,
+          "p1_db": -14.4,
+          "p99_db": 15.9,
+          "frac_below_floor": 0.0,
+          "dead": false
+        },
+        "dead_channels": [
+          "S_avg"
+        ]
+      }
+    },
+    "sample_outliers": {
+      "status": "PASS",
+      "lines": [
+        "0 flagged sample(s) (energy outliers: 0, exact duplicates: 0)"
+      ],
+      "data": {
+        "n_flagged": 0,
+        "frac": 0.0
+      }
+    },
+    "channel_drift": {
+      "status": "WARN",
+      "lines": [
+        "max corr spread 1.41 (threshold 0.15) | max group-mean dev 7.2 dB (threshold 3.0 dB)",
+        "      corr(S_avg,S11) group medians [0.17, 0.29, 0.37, 0.36, 0.45, 0.38] (spread 0.28 > 0.15)",
+        "      corr(S_avg,S22) group medians [-0.07, 0.52, -0.25, -0.27, -0.13, 0.07] (spread 0.79 > 0.15)",
+        "      corr(S11,S22) group medians [-0.51, 0.84, -0.47, -0.43, -0.39, 0.9] (spread 1.41 > 0.15)",
+        "      S001/SES01 mean curve deviates 3.8 dB (max channel) from global mean",
+        "      S001/SES02 mean curve deviates 6.5 dB (max channel) from global mean",
+        "      S002/SES02 mean curve deviates 3.2 dB (max channel) from global mean",
+        "      S003/SES01 mean curve deviates 4.1 dB (max channel) from global mean",
+        "      S003/SES02 mean curve deviates 7.2 dB (max channel) from global mean"
+      ],
+      "data": {
+        "corr_S_avg~S11": {
+          "group_medians": [
+            0.171,
+            0.286,
+            0.366,
+            0.357,
+            0.449,
+            0.382
+          ],
+          "spread": 0.278
+        },
+        "corr_S_avg~S22": {
+          "group_medians": [
+            -0.074,
+            0.52,
+            -0.254,
+            -0.268,
+            -0.127,
+            0.074
+          ],
+          "spread": 0.788
+        },
+        "corr_S11~S22": {
+          "group_medians": [
+            -0.512,
+            0.843,
+            -0.47,
+            -0.432,
+            -0.39,
+            0.902
+          ],
+          "spread": 1.414
+        },
+        "max_corr_spread": 1.414,
+        "max_mean_dev_db": 7.16
+      }
+    },
+    "tensor": {
+      "status": "PASS",
+      "lines": [
+        "X(3000, 94, 6) | finite: True | mean -1.624e-05 std 7.290e-02 absmax 8.704e-01",
+        "informative steps 94/94 (100%)"
+      ],
+      "data": {
+        "shape": [
+          3000,
+          94,
+          6
+        ],
+        "n_nonfinite": 0,
+        "informative_steps": 94,
+        "informative_frac": 1.0
+      }
+    }
+  }
+}

@@ -1,7 +1,7 @@
 {
   "run_name": "feat_cum_energy",
   "domain": "time",
-  "timestamp": "2026-10-09T01:56:49",
+  "timestamp": "2026-10-09T23:15:30",
   "n_samples": 3000,
   "verdict": "USABLE",
   "usable_channels": [
@@ -78,18 +78,18 @@
     "tensor": {
       "status": "PASS",
       "lines": [
-        "X(3000, 108, 2) | finite: True | mean +6.634e-02 std 2.479e-01 absmax 1.000e+00",
-        "informative steps 106/108 (98%)"
+        "X(3000, 113, 2) | finite: True | mean +6.423e-02 std 2.493e-01 absmax 1.000e+00",
+        "informative steps 107/113 (95%)"
       ],
       "data": {
         "shape": [
           3000,
-          108,
+          113,
           2
         ],
         "n_nonfinite": 0,
-        "informative_steps": 106,
-        "informative_frac": 0.981
+        "informative_steps": 107,
+        "informative_frac": 0.947
       }
     }
   }

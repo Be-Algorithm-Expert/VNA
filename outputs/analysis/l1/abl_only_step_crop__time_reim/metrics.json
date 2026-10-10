@@ -1,0 +1,39 @@
+{
+  "run_name": "abl_only_step_crop",
+  "domain": "time",
+  "feature": "reim",
+  "n_samples": 3000,
+  "n_classes": 50,
+  "fisher_mean": {
+    "S_avg": 0.041,
+    "S11": 0.006,
+    "S22": 0.008
+  },
+  "lda_pooled": {
+    "S_avg": 0.2397,
+    "S11": 0.2773,
+    "S22": 0.2727
+  },
+  "lda_logo": {
+    "S_avg": 0.025,
+    "S11": 0.0223,
+    "S22": 0.0157
+  },
+  "knn_pooled": {
+    "S_avg": 0.4227,
+    "S11": 0.471,
+    "S22": 0.3643
+  },
+  "knn_logo": {
+    "S_avg": 0.022,
+    "S11": 0.0163,
+    "S22": 0.0197
+  },
+  "drift_ratio": {
+    "S_avg": 2.549,
+    "S11": 13.681,
+    "S22": 8.778
+  },
+  "pca_pc12_variance": 0.762,
+  "class_distance_mean": 3.711
+}

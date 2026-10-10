@@ -22,13 +22,13 @@ enhance:
     params:
       n_draws: 10
       seed: 0
-  - name: diff_sub
-    params:
-      ref: group_median
   - name: diff_div
     params:
       ref: group_median
       mask_db: -60.0
+  - name: diff_sub
+    params:
+      ref: group_median
   - name: ifft_window
     params:
       type: kaiser

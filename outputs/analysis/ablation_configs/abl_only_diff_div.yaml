@@ -1,0 +1,19 @@
+run_name: abl_only_diff_div
+data:
+  root: f:/H坏盘备份/VNA_Cls_2026/dataset_3_2_50_10
+  processed_root: f:/H坏盘备份/VNA_Cls_2026/processed
+  run_name: baseline_s21
+  subjects:
+  - S001
+  - S002
+  - S003
+  sessions:
+  - SES01
+  - SES02
+  domain: time
+enhance:
+  steps:
+  - name: diff_div
+    params:
+      ref: group_median
+      mask_db: -60.0
